@@ -1,12 +1,20 @@
 version: '3.9'
 
+# Access Web Portal 0.0.0.0::8581
+
 services:
   homebridge:
     container_name: homebridge
     image: oznu/homebridge
     environment:
       - DSM_HOSTNAME=Galactica
+      - TZ=Asia/Kuching
     volumes:
       - /data/homebridge/homebridge:/homebridge
     network_mode: host
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
