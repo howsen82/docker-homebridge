@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  homebridge:
+    container_name: homebridge
+    image: oznu/homebridge
+    environment:
+      - DSM_HOSTNAME=Galactica
+    volumes:
+      - /data/homebridge/homebridge:/homebridge
+    network_mode: host
+    restart: unless-stopped
