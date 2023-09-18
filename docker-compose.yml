@@ -12,6 +12,8 @@ services:
     volumes:
       - /data/homebridge/homebridge:/homebridge
     network_mode: host
+    healthcheck:
+      test: curl -f http://localhost:8581/ || exit 1
     restart: unless-stopped
     logging:
       driver: json-file
